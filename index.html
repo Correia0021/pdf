@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>manual</title>
+  <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+</head>
+<body>
+  <canvas id="pdf-view"></canvas>
+
+  <script>
+    const url = 'C:/Users/guilh/Desktop/manual.pdf';
+
+    pdfjsLib.getDocument(url).then(pdf => {
+      pdf.getPage(1).then(page => {
+        const canvas = document.getElementById('pdf-view');
+        const context = canvas.getContext('2d');
+        const viewport = page.getViewport({ scale: 1.5 });
+
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        page.render({ canvasContext: context, viewport: viewport });
+      });
+    });
+  </script>
+</body>
+</html>
