@@ -8,7 +8,7 @@
   <canvas id="pdf-view"></canvas>
 
   <script>
-    const url = 'C:/Users/guilh/Desktop/manual.pdf';
+    const url = 'manual.pdf';
 
     pdfjsLib.getDocument(url).then(pdf => {
       pdf.getPage(1).then(page => {
